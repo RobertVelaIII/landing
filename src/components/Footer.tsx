@@ -6,22 +6,22 @@ export default function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div>
-            <div className="text-2xl tracking-wider mb-6 text-red-600 font-bold">INKREDIBLE</div>
-            <p className="text-neutral-400">Premium tattoo studio dedicated to creating lasting art that tells your story.</p>
+            <div className="text-2xl tracking-wider mb-6 text-red-600 font-bold">Chrispy Craig</div>
+            <p className="text-neutral-400">Premium tattoo artist dedicated to creating lasting art that tells your story, in a private studio setting, I drive to you as well.</p>
           </div>
           <div>
             <h3 className="text-lg mb-4 text-red-500 font-semibold">Hours</h3>
             <ul className="space-y-2 text-neutral-400">
-              <li>Monday - Friday: 11am - 8pm</li>
-              <li>Saturday: 10am - 6pm</li>
+              <li>Monday - Friday: Open</li>
+              <li>Saturday: Open</li>
               <li>Sunday: Closed</li>
             </ul>
           </div>
           <div>
             <h3 className="text-lg mb-4 text-red-500 font-semibold">Location</h3>
             <address className="text-neutral-400 not-italic">
-              123 Ink Street<br />
-              New York, NY 10001<br />
+              Drive to you.<br />
+              DFW Area<br />
               <span className="hover:text-white transition-colors cursor-pointer">+1 (212) 555-1234</span>
             </address>
           </div>

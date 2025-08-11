@@ -109,7 +109,7 @@ export default function Home() {
           <div className="relative overflow-hidden group">
             <button 
               onClick={goToPrev}
-              className="absolute left-0 top-1/2 z-10 transform -translate-y-1/2 p-2 rounded-full bg-red-600 hover:bg-red-700 transition-colors opacity-0 group-hover:opacity-100"
+              className="absolute left-0 top-1/2 z-10 transform -translate-y-1/2 p-2 rounded-full bg-red-600 hover:bg-red-700 transition-colors opacity-70"
               aria-label="Previous slide"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -119,7 +119,7 @@ export default function Home() {
             
             <button 
               onClick={goToNext}
-              className="absolute right-0 top-1/2 z-10 transform -translate-y-1/2 p-2 rounded-full bg-red-600 hover:bg-red-700 transition-colors opacity-0 group-hover:opacity-100"
+              className="absolute right-0 top-1/2 z-10 transform -translate-y-1/2 p-2 rounded-full bg-red-600 hover:bg-red-700 transition-colors opacity-70"
               aria-label="Next slide"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -132,6 +132,8 @@ export default function Home() {
                 {...settings} 
                 className="-mx-2"
                 slidesToShow={windowWidth < 640 ? 1 : windowWidth < 768 ? 2 : windowWidth < 1024 ? 3 : windowWidth < 1280 ? 4 : 5}
+                arrows={false}
+                swipeToSlide={true}
               >
 
               <div className="px-2">

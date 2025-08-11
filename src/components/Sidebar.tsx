@@ -37,7 +37,7 @@ export default function Sidebar() {
       <div className={`
         fixed top-0 left-0 h-full w-64 bg-black text-white transform transition-transform duration-300 ease-in-out z-40
         ${isOpen ? 'translate-x-0' : '-translate-x-full'} 
-        md:translate-x-0 md:static md:h-screen
+        md:translate-x-0 md:relative md:h-screen
       `}>
         <div className="p-5">
           <h2 className="text-2xl font-bold mb-10 text-red-600">Menu</h2>

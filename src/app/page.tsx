@@ -82,7 +82,7 @@ export default function Home() {
       {/* Hero Section */}
       <section 
         id="hero" 
-        className="relative h-[800px] flex items-center bg-neutral-900"
+        className="relative h-[800px] flex flex-col items-center bg-neutral-900"
       >
         {/* Hero background image with 20% opacity */}
         <div className="absolute inset-0 bg-black">
@@ -113,8 +113,17 @@ export default function Home() {
           }}
         ></div>
         
+        {/* Logo at top center */}
+        <div className="container relative z-10 mx-auto px-6 pt-12 flex justify-center">
+          <img 
+            src="/images/Title.png" 
+            alt="Inkredible Logo" 
+            className="max-h-[30rem] mb-8" 
+          />
+        </div>
+        
         {/* Hero Content */}
-        <div className="container relative z-10 mx-auto px-6">
+        <div className="container relative z-10 mx-auto px-6 mt-auto">
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-7xl mb-6 leading-tight">Permanent Art for the Discerning Soul</h1>
             <p className="text-xl text-neutral-300 mb-8">Premium custom tattoos crafted by award-winning artists in a private studio setting.</p>

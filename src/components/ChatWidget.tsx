@@ -118,7 +118,7 @@ export default function ChatWidget() {
     <>
       {/* Welcome Popup */}
       {showPopup && (
-        <div className="fixed bottom-24 right-6 bg-white rounded-lg shadow-xl p-4 w-64 z-50 animate-bounce">
+        <div className="fixed bottom-24 right-6 bg-white rounded-lg shadow-xl p-4 w-64 z-50">
           <button 
             onClick={closePopup}
             className="absolute top-2 right-2 text-gray-500 hover:text-black"

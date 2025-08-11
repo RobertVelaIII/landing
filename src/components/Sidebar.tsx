@@ -14,7 +14,7 @@ export default function Sidebar() {
     <>
       {/* Hamburger menu button for mobile */}
       <button 
-        className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-md bg-gray-800 text-white"
+        className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-md bg-black text-white"
         onClick={toggleSidebar}
         aria-label="Toggle menu"
       >
@@ -35,21 +35,21 @@ export default function Sidebar() {
 
       {/* Sidebar */}
       <div className={`
-        fixed top-0 left-0 h-full w-64 bg-gray-800 text-white transform transition-transform duration-300 ease-in-out z-40
+        fixed top-0 left-0 h-full w-64 bg-black text-white transform transition-transform duration-300 ease-in-out z-40
         ${isOpen ? 'translate-x-0' : '-translate-x-full'} 
         md:translate-x-0 md:static md:h-screen
       `}>
         <div className="p-5">
-          <h2 className="text-2xl font-bold mb-10">Menu</h2>
+          <h2 className="text-2xl font-bold mb-10 text-red-600">Menu</h2>
           <nav>
             <ul className="space-y-4">
               <li>
-                <Link href="/" className="block py-2 px-4 rounded hover:bg-gray-700 transition-colors">
+                <Link href="/" className="block py-2 px-4 rounded hover:bg-red-700 transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/bookings" className="block py-2 px-4 rounded hover:bg-gray-700 transition-colors">
+                <Link href="/bookings" className="block py-2 px-4 rounded hover:bg-red-700 transition-colors">
                   Bookings
                 </Link>
               </li>

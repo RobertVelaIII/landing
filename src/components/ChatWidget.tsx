@@ -121,7 +121,7 @@ export default function ChatWidget() {
         <div className="fixed bottom-24 right-6 bg-white rounded-lg shadow-xl p-4 w-64 z-50 animate-bounce">
           <button 
             onClick={closePopup}
-            className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+            className="absolute top-2 right-2 text-gray-500 hover:text-black"
             aria-label="Close popup"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -129,17 +129,17 @@ export default function ChatWidget() {
             </svg>
           </button>
           <div className="flex items-center mb-2">
-            <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center mr-3">
+            <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center mr-3">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
               </svg>
             </div>
-            <p className="font-medium text-gray-900 text-lg">Need help?</p>
+            <p className="font-medium text-black text-lg">Need help?</p>
           </div>
-          <p className="text-sm text-gray-700">Speak to Chrispy Craig 24/7</p>
+          <p className="text-sm text-black">Speak to Chrispy Craig 24/7</p>
           <button 
             onClick={toggleChat}
-            className="mt-3 w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+            className="mt-3 w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors"
           >
             Start Chat
           </button>
@@ -149,7 +149,7 @@ export default function ChatWidget() {
       {/* Chat button */}
       <button
         onClick={toggleChat}
-        className="fixed bottom-6 right-6 bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-blue-700 transition-all z-50"
+        className="fixed bottom-6 right-6 bg-red-600 text-white rounded-full p-4 shadow-lg hover:bg-red-700 transition-all z-50"
         aria-label="Open chat"
       >
         {isOpen ? (
@@ -164,67 +164,62 @@ export default function ChatWidget() {
       </button>
 
       {/* Chat window */}
-      <div 
-        className={`fixed bottom-20 right-6 w-80 sm:w-96 bg-white rounded-lg shadow-xl z-50 transition-all duration-300 transform ${
-          isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'
-        }`}
-      >
-        {/* Chat header */}
-        <div className="bg-blue-600 text-white p-4 rounded-t-lg flex justify-between items-center">
-          <h3 className="font-medium">24/7 Support</h3>
-          <button onClick={toggleChat} className="text-white hover:text-gray-200">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
+      {isOpen && (
+        <div className="fixed bottom-6 right-6 w-80 md:w-96 h-96 bg-white rounded-lg shadow-xl flex flex-col z-50">
+          {/* Chat header */}
+          <div className="bg-black text-white p-4 rounded-t-lg flex justify-between items-center">
+            <h3 className="font-medium text-red-500">24/7 Support</h3>
+            <button onClick={toggleChat} className="text-white hover:text-red-400">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </button>
+          </div>
 
-        {/* Chat messages */}
-        <div className="h-80 overflow-y-auto p-4 bg-gray-50">
-          {messages.map((message) => (
-            <div 
-              key={message.id} 
-              className={`mb-4 flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-            >
-              <div 
-                className={`max-w-[80%] rounded-lg p-3 ${
-                  message.sender === 'user' 
-                    ? 'bg-blue-600 text-white' 
-                    : 'bg-gray-200 text-gray-800'
-                }`}
-              >
-                <p className="text-sm">{message.text}</p>
-                <span className={`text-xs mt-1 block text-right ${
-                  message.sender === 'user' ? 'text-blue-100' : 'text-gray-500'
-                }`}>
-                  {formatTime(message.timestamp)}
-                </span>
+          {/* Chat messages */}
+          <div className="h-64 overflow-y-auto p-4 bg-gray-50">
+            {messages.map((message) => (
+              <div key={message.id} className={`mb-4 flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                <div 
+                  className={`max-w-[80%] rounded-lg p-3 ${
+                    message.sender === 'user' 
+                      ? 'bg-red-600 text-white' 
+                      : 'bg-gray-200 text-black'
+                  }`}
+                >
+                  <p className="text-sm">{message.text}</p>
+                  <span className={`text-xs mt-1 block text-right ${
+                    message.sender === 'user' ? 'text-red-100' : 'text-gray-500'
+                  }`}>
+                    {formatTime(message.timestamp)}
+                  </span>
+                </div>
               </div>
-            </div>
-          ))}
-          <div ref={messagesEndRef} />
-        </div>
+            ))}
+            <div ref={messagesEndRef} />
+          </div>
 
-        {/* Chat input */}
-        <div className="p-4 border-t border-gray-200 flex">
-          <input
-            type="text"
-            value={inputText}
-            onChange={handleInputChange}
-            onKeyPress={handleKeyPress}
-            placeholder="Type your message..."
-            className="flex-1 border border-gray-300 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-600 text-gray-900"
-          />
-          <button
-            onClick={sendMessage}
-            className="bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-700"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
-          </button>
+          {/* Chat input */}
+          <div className="p-4 border-t border-gray-200 flex">
+            <input
+              type="text"
+              value={inputText}
+              onChange={handleInputChange}
+              onKeyPress={handleKeyPress}
+              placeholder="Type your message..."
+              className="flex-1 border border-gray-300 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500 placeholder-gray-600 text-gray-900"
+            />
+            <button
+              onClick={sendMessage}
+              className="bg-red-600 text-white px-4 py-2 rounded-r-lg hover:bg-red-700"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+              </svg>
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

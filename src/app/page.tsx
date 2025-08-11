@@ -13,6 +13,34 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
+      {/* Portfolio Section */}
+      <section id="portfolio" className="py-20 bg-black">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl mb-12">Our Masterpieces</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-neutral-800 h-96 flex items-center justify-center">
+              <span className="text-white">Black & Grey Realism</span>
+            </div>
+            <div className="bg-neutral-800 h-96 flex items-center justify-center">
+              <span className="text-white">Japanese Traditional</span>
+            </div>
+            <div className="bg-neutral-800 h-96 flex items-center justify-center">
+              <span className="text-white">Neo-Traditional</span>
+            </div>
+            <div className="bg-neutral-800 h-96 flex items-center justify-center">
+              <span className="text-white">Blackwork</span>
+            </div>
+            <div className="bg-neutral-800 h-96 flex items-center justify-center">
+              <span className="text-white">Fine Line</span>
+            </div>
+            <div className="bg-neutral-800 h-96 flex items-center justify-center">
+              <span className="text-white">Custom Lettering</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       <ChatWidget />
     </div>
   );

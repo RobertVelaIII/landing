@@ -9,6 +9,13 @@ interface Message {
   timestamp: Date;
 }
 
+// Create a global reference to the toggle function
+declare global {
+  interface Window {
+    chatWidgetToggle?: () => void;
+  }
+}
+
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [showPopup, setShowPopup] = useState(true); // Start with popup visible
@@ -30,6 +37,15 @@ export default function ChatWidget() {
     setIsOpen(!isOpen);
     setShowPopup(false); // Hide popup when chat is opened
   };
+  
+  // Expose the toggle function globally
+  useEffect(() => {
+    window.chatWidgetToggle = toggleChat;
+    
+    return () => {
+      delete window.chatWidgetToggle;
+    };
+  }, []);
   
   const closePopup = () => {
     setShowPopup(false);

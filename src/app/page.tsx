@@ -1,11 +1,12 @@
 "use client";
 
+import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import ChatWidget from "../components/ChatWidget";
 import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useRef, useState, useEffect } from "react";
 
 export default function Home() {
   const sliderRef = useRef<Slider>(null);
@@ -118,8 +119,8 @@ export default function Home() {
             <h1 className="text-5xl md:text-7xl mb-6 leading-tight">Permanent Art for the Discerning Soul</h1>
             <p className="text-xl text-neutral-300 mb-8">Premium custom tattoos crafted by award-winning artists in a private studio setting.</p>
             <div className="flex space-x-4">
-              <span className="inline-block bg-red-600 text-white px-8 py-4 text-lg font-medium rounded-full hover:bg-red-700 transition-colors cursor-pointer">Book</span>
-              <span className="inline-block bg-neutral-200 text-black px-8 py-4 text-lg font-medium rounded-full hover:bg-neutral-300 transition-colors cursor-pointer">Chat with Artist</span>
+              <Link href="/bookings" className="inline-block bg-red-600 text-white px-8 py-4 text-lg font-medium rounded-full hover:bg-red-700 transition-colors cursor-pointer">Book</Link>
+              <span onClick={() => window.chatWidgetToggle && window.chatWidgetToggle()} className="inline-block bg-neutral-200 text-black px-8 py-4 text-lg font-medium rounded-full hover:bg-neutral-300 transition-colors cursor-pointer">Chat with Artist</span>
             </div>
           </div>
         </div>

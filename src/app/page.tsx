@@ -83,8 +83,34 @@ export default function Home() {
         id="hero" 
         className="relative h-[800px] flex items-center bg-neutral-900"
       >
-        {/* Solid background as fallback since image isn't loading */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black to-neutral-800"></div>
+        {/* Hero background image with 20% opacity */}
+        <div className="absolute inset-0 bg-black">
+          <img 
+            src="/images/hero.jpg" 
+            alt="Hero background" 
+            className="w-full h-full object-cover opacity-20" 
+          />
+        </div>
+        
+        {/* Horizontal gradient at the bottom */}
+        <div 
+          className="absolute bottom-0 left-0 right-0" 
+          style={{
+            width: '100%',
+            height: '163px',
+            background: 'linear-gradient(0deg, #000 24.06%, rgba(0, 0, 0, 0.00) 99.24%)'
+          }}
+        ></div>
+        
+        {/* Vertical gradient on the side */}
+        <div 
+          className="absolute top-0 left-0 bottom-0" 
+          style={{
+            width: '142px',
+            height: '100%',
+            background: 'linear-gradient(90deg, rgba(0, 0, 0, 0.80) 24.06%, rgba(0, 0, 0, 0.00) 99.24%)'
+          }}
+        ></div>
         
         {/* Hero Content */}
         <div className="container relative z-10 mx-auto px-6">

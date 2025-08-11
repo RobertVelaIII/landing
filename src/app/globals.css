@@ -5,12 +5,24 @@
   --foreground: #171717;
 }
 
+/* 
+ * Note: @theme is a non-standard CSS rule causing IDE warnings
+ * Keeping it as requested by user, but adding this comment to acknowledge the warning
+ */
+/* stylelint-disable */
+/* eslint-disable */
+/* prettier-ignore-start */
+/* IDE-IGNORE-START */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
+/* IDE-IGNORE-END */
+/* prettier-ignore-end */
+/* eslint-enable */
+/* stylelint-enable */
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -18,6 +30,8 @@
     --foreground: #ededed;
   }
 }
+
+/* Removed mobile-specific carousel overrides */
 
 body {
   background: var(--background);

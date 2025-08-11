@@ -5,24 +5,40 @@ import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 export default function Home() {
   const sliderRef = useRef<Slider>(null);
+  const [windowWidth, setWindowWidth] = useState<number>(0);
+  const [isClient, setIsClient] = useState<boolean>(false);
+  
+  // Initialize client-side rendering and window width
+  useEffect(() => {
+    setIsClient(true);
+    setWindowWidth(window.innerWidth);
+    
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 5,
-    slidesToScroll: 2,
+    slidesToScroll: 1,
     arrows: false,
+    swipeToSlide: true,
     responsive: [
       {
         breakpoint: 1280,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 2
+          slidesToScroll: 1
         }
       },
       {
@@ -110,7 +126,13 @@ export default function Home() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
-            <Slider ref={sliderRef} {...settings} className="-mx-2">
+            {isClient && (
+              <Slider 
+                ref={sliderRef} 
+                {...settings} 
+                className="-mx-2"
+                slidesToShow={windowWidth < 640 ? 1 : windowWidth < 768 ? 2 : windowWidth < 1024 ? 3 : windowWidth < 1280 ? 4 : 5}
+              >
 
               <div className="px-2">
                 <div className="bg-neutral-800 h-96 rounded-lg overflow-hidden relative group cursor-pointer">
@@ -248,6 +270,7 @@ export default function Home() {
                 </div>
               </div>
             </Slider>
+            )}
           </div>
         </div>
       </section>

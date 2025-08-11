@@ -308,12 +308,12 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="flex flex-col sm:flex-row space-y-6 sm:space-y-0 sm:space-x-6">
               <div className="w-20 h-20 rounded-full bg-neutral-800 flex-shrink-0 overflow-hidden">
-                <img src="https://api.dicebear.com/7.x/notionists/svg?scale=200&seed=1242" alt="Client" className="w-full h-full object-cover" />
+                <img src="/images/joe-rogan.png" alt="Joe Rogan" className="w-full h-full object-cover" />
               </div>
               <div>
                 <div className="w-12 h-1 bg-white mb-4"></div>
                 <p className="text-neutral-300 mb-4">"I'm Joe rogan, and these fucking tattoo's hurt, the fucking numbing cream wore off but the tattoos are so good. Have you ever tried DMT ? I just took a hit to the skull. Fuck Joe Biden. Highly recommend Chrispy Craig for your tattoo needs."</p>
-                <p className="mb-4">— Alexandra M.</p>
+                <p className="mb-4">— Joe Rogan</p>
                 <div className="flex items-center space-x-2">
                   <button 
                     className="p-2 rounded-full bg-red-600 hover:bg-red-700 transition-colors"
@@ -339,13 +339,13 @@ export default function Home() {
             </div>
             <div className="flex flex-col sm:flex-row space-y-6 sm:space-y-0 sm:space-x-6">
               <div className="w-20 h-20 rounded-full bg-neutral-800 flex-shrink-0 overflow-hidden">
-                <img src="https://api.dicebear.com/7.x/notionists/svg?scale=200&seed=4213" alt="Client" className="w-full h-full object-cover" />
+                <img src="/images/andrew-tate.png" alt="Andrew Tate" className="w-full h-full object-cover" />
               </div>
               <div>
                 <div className="w-12 h-1 bg-white mb-4"></div>
                 <p className="text-neutral-300 mb-4">"Chrispy Craig has the fucking sauce, do you understand? 
                 His unmatched perspicacity coupled with his sheer indefitigability makes him a feared opponent in any realm of human endeavor. American Traditional, Neo Traditional, everything else., blah blah blah, shit you can not afford because you are broke! Your fucking Poor!  Are you connecting the dots? Put him on fucking ink master. "</p>
-                <p className="mb-4">— James K.</p>
+                <p className="mb-4">— Andrew Tate</p>
                 <div className="flex items-center space-x-2">
                   <button 
                     className="p-2 rounded-full bg-red-600 hover:bg-red-700 transition-colors"

@@ -69,7 +69,7 @@ export default function BookingsPage() {
             <div className="space-y-8">
               <div className="border border-neutral-800 p-8">
                 <h3 className="text-2xl mb-4">Consultation Process</h3>
-                <p className="text-neutral-300 mb-6">After submitting your request, our artists will review your concept and contact you within 48 hours to schedule an in-person or virtual consultation.</p>
+                <p className="text-neutral-300 mb-6">After submitting your request, we will review your concept and contact you within 48 hours to schedule an in-person or virtual consultation.</p>
                 <ul className="space-y-3 text-neutral-300">
                   <li className="flex items-start">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3 mt-1 text-white" viewBox="0 0 20 20" fill="currentColor">

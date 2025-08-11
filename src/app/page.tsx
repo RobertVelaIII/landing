@@ -317,16 +317,11 @@ export default function Home() {
       <section id="services" className="py-20 bg-black border-t border-neutral-800">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl mb-12">Our Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-black border border-neutral-800 p-8 hover:border-white transition-colors">
               <h3 className="text-2xl mb-4">Custom Design</h3>
               <p className="text-neutral-300 mb-6">Unique artwork created specifically for you, based on your vision and our artistic expertise.</p>
               <p className="text-xl">From $300</p>
-            </div>
-            <div className="bg-black border border-neutral-800 p-8 hover:border-white transition-colors">
-              <h3 className="text-2xl mb-4">Cover-Up Work</h3>
-              <p className="text-neutral-300 mb-6">Transform existing tattoos into new, beautiful designs that align with your current aesthetic.</p>
-              <p className="text-xl">From $450</p>
             </div>
             <div className="bg-black border border-neutral-800 p-8 hover:border-white transition-colors">
               <h3 className="text-2xl mb-4">Full Sleeve</h3>

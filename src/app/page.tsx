@@ -301,6 +301,78 @@ export default function Home() {
         </div>
       </section>
       
+      {/* Testimonials */}
+      <section id="testimonials" className="py-20 bg-black border-t border-neutral-800">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl mb-12">Client Stories</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div className="flex flex-col sm:flex-row space-y-6 sm:space-y-0 sm:space-x-6">
+              <div className="w-20 h-20 rounded-full bg-neutral-800 flex-shrink-0 overflow-hidden">
+                <img src="https://api.dicebear.com/7.x/notionists/svg?scale=200&seed=1242" alt="Client" className="w-full h-full object-cover" />
+              </div>
+              <div>
+                <div className="w-12 h-1 bg-white mb-4"></div>
+                <p className="text-neutral-300 mb-4">"I'm Joe rogan, and these fucking tattoo's hurt, the fucking numbing cream wore off but the tattoos are so good. Have you ever tried DMT ? I just took a hit to the skull. Fuck Joe Biden. Highly recommend Chrispy Craig for your tattoo needs."</p>
+                <p className="mb-4">— Alexandra M.</p>
+                <div className="flex items-center space-x-2">
+                  <button 
+                    className="p-2 rounded-full bg-red-600 hover:bg-red-700 transition-colors"
+                    onClick={() => {
+                      const audio = document.getElementById('audio-testimonial-1') as HTMLAudioElement;
+                      if (audio.paused) {
+                        audio.play();
+                      } else {
+                        audio.pause();
+                        audio.currentTime = 0;
+                      }
+                    }}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </button>
+                  <span className="text-sm text-neutral-400">Listen to testimonial</span>
+                  <audio id="audio-testimonial-1" src="/audio/testimonial1.mp3" preload="none"></audio>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col sm:flex-row space-y-6 sm:space-y-0 sm:space-x-6">
+              <div className="w-20 h-20 rounded-full bg-neutral-800 flex-shrink-0 overflow-hidden">
+                <img src="https://api.dicebear.com/7.x/notionists/svg?scale=200&seed=4213" alt="Client" className="w-full h-full object-cover" />
+              </div>
+              <div>
+                <div className="w-12 h-1 bg-white mb-4"></div>
+                <p className="text-neutral-300 mb-4">"Chrispy Craig has the fucking sauce, do you understand? 
+                His unmatched perspicacity coupled with his sheer indefitigability makes him a feared opponent in any realm of human endeavor. American Traditional, Neo Traditional, everything else., blah blah blah, shit you can not afford because you are broke! Your fucking Poor!  Are you connecting the dots? Put him on fucking ink master. "</p>
+                <p className="mb-4">— James K.</p>
+                <div className="flex items-center space-x-2">
+                  <button 
+                    className="p-2 rounded-full bg-red-600 hover:bg-red-700 transition-colors"
+                    onClick={() => {
+                      const audio = document.getElementById('audio-testimonial-2') as HTMLAudioElement;
+                      if (audio.paused) {
+                        audio.play();
+                      } else {
+                        audio.pause();
+                        audio.currentTime = 0;
+                      }
+                    }}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </button>
+                  <span className="text-sm text-neutral-400">Listen to testimonial</span>
+                  <audio id="audio-testimonial-2" src="/audio/testimonial2.mp3" preload="none"></audio>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       <ChatWidget />
     </div>
   );

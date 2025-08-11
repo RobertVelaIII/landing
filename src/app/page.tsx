@@ -86,31 +86,30 @@ export default function Home() {
       {/* Portfolio Section - Netflix Style Carousel */}
       <section id="portfolio" className="py-20 bg-black">
         <div className="container mx-auto px-6">
-          <div className="flex justify-between items-center mb-6">
+          <div className="mb-6">
             <h2 className="text-4xl">Our Masterpieces</h2>
-            <div className="flex space-x-4">
-              <button 
-                onClick={goToPrev}
-                className="p-2 rounded-full bg-red-600 hover:bg-red-700 transition-colors"
-                aria-label="Previous slide"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <button 
-                onClick={goToNext}
-                className="p-2 rounded-full bg-red-600 hover:bg-red-700 transition-colors"
-                aria-label="Next slide"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
           </div>
           
-          <div className="relative overflow-hidden">
+          <div className="relative overflow-hidden group">
+            <button 
+              onClick={goToPrev}
+              className="absolute left-0 top-1/2 z-10 transform -translate-y-1/2 p-2 rounded-full bg-red-600 hover:bg-red-700 transition-colors opacity-0 group-hover:opacity-100"
+              aria-label="Previous slide"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            
+            <button 
+              onClick={goToNext}
+              className="absolute right-0 top-1/2 z-10 transform -translate-y-1/2 p-2 rounded-full bg-red-600 hover:bg-red-700 transition-colors opacity-0 group-hover:opacity-100"
+              aria-label="Next slide"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
             <Slider ref={sliderRef} {...settings} className="-mx-2">
 
               <div className="px-2">

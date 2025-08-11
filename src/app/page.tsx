@@ -75,7 +75,10 @@ export default function Home() {
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-7xl mb-6 leading-tight">Permanent Art for the Discerning Soul</h1>
             <p className="text-xl text-neutral-300 mb-8">Premium custom tattoos crafted by award-winning artists in a private studio setting.</p>
-            <span className="inline-block bg-white text-black px-8 py-4 text-lg hover:bg-neutral-200 transition-colors cursor-pointer">Book a Consultation</span>
+            <div className="flex space-x-4">
+              <span className="inline-block bg-red-600 text-white px-8 py-4 text-lg font-medium rounded-full hover:bg-red-700 transition-colors cursor-pointer">Book</span>
+              <span className="inline-block bg-neutral-200 text-black px-8 py-4 text-lg font-medium rounded-full hover:bg-neutral-300 transition-colors cursor-pointer">Chat with Artist</span>
+            </div>
           </div>
         </div>
       </section>

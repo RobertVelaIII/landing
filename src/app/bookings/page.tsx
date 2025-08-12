@@ -1,8 +1,77 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function BookingsPage() {
+  // Form state
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    placement: 'Arm',
+    size: 'Small (2-3 inches)',
+    style: 'Japanese Traditional',
+    notes: ''
+  });
+  
+  // Loading and success states
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  
+  // Handle input changes
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+  
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError('');
+    
+    try {
+      // Send data to backend API
+      const response = await fetch('http://localhost:3001/api/contact/booking', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to submit booking request');
+      }
+      
+      // Show success message
+      setSubmitSuccess(true);
+      
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        setFormData({
+          fullName: '',
+          email: '',
+          phone: '',
+          placement: 'Arm',
+          size: 'Small (2-3 inches)',
+          style: 'Japanese Traditional',
+          notes: ''
+        });
+        setSubmitSuccess(false);
+      }, 5000);
+      
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitError('Failed to submit booking request. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Booking Form */}
@@ -11,60 +80,121 @@ export default function BookingsPage() {
           <h2 className="text-4xl mb-12">Book Your Consultation</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
-              <form className="space-y-6">
+              {submitSuccess ? (
+                <div className="bg-green-900 border border-green-700 text-white p-6 rounded">
+                  <h3 className="text-xl mb-2">Booking Request Submitted!</h3>
+                  <p>Thank you for your booking request. We will review your information and contact you within 48 hours to schedule your consultation.</p>
+                </div>
+              ) : (
+                <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm mb-2">Full Name</label>
-                    <input type="text" className="w-full p-3 bg-black border border-neutral-800 focus:border-white focus:outline-none transition-colors" />
+                    <input 
+                      type="text" 
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleChange}
+                      required
+                      className="w-full p-3 bg-black border border-neutral-800 focus:border-white focus:outline-none transition-colors" 
+                    />
                   </div>
                   <div>
                     <label className="block text-sm mb-2">Email Address</label>
-                    <input type="email" className="w-full p-3 bg-black border border-neutral-800 focus:border-white focus:outline-none transition-colors" />
+                    <input 
+                      type="email" 
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full p-3 bg-black border border-neutral-800 focus:border-white focus:outline-none transition-colors" 
+                    />
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm mb-2">Phone Number</label>
-                  <input type="tel" className="w-full p-3 bg-black border border-neutral-800 focus:border-white focus:outline-none transition-colors" />
+                  <input 
+                    type="tel" 
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    className="w-full p-3 bg-black border border-neutral-800 focus:border-white focus:outline-none transition-colors" 
+                  />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm mb-2">Placement</label>
-                    <select className="w-full p-3 bg-black border border-neutral-800 focus:border-white focus:outline-none transition-colors">
-                      <option>Arm</option>
-                      <option>Leg</option>
-                      <option>Back</option>
-                      <option>Chest</option>
-                      <option>Other</option>
+                    <select 
+                      name="placement"
+                      value={formData.placement}
+                      onChange={handleChange}
+                      className="w-full p-3 bg-black border border-neutral-800 focus:border-white focus:outline-none transition-colors"
+                    >
+                      <option value="Arm">Arm</option>
+                      <option value="Leg">Leg</option>
+                      <option value="Back">Back</option>
+                      <option value="Chest">Chest</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
                   <div>
                     <label className="block text-sm mb-2">Size</label>
-                    <select className="w-full p-3 bg-black border border-neutral-800 focus:border-white focus:outline-none transition-colors">
-                      <option>Small (2-3 inches)</option>
-                      <option>Medium (4-6 inches)</option>
-                      <option>Large (7-10 inches)</option>
-                      <option>Extra Large (11+ inches)</option>
+                    <select 
+                      name="size"
+                      value={formData.size}
+                      onChange={handleChange}
+                      className="w-full p-3 bg-black border border-neutral-800 focus:border-white focus:outline-none transition-colors"
+                    >
+                      <option value="Small (2-3 inches)">Small (2-3 inches)</option>
+                      <option value="Medium (4-6 inches)">Medium (4-6 inches)</option>
+                      <option value="Large (7-10 inches)">Large (7-10 inches)</option>
+                      <option value="Extra Large (11+ inches)">Extra Large (11+ inches)</option>
                     </select>
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm mb-2">Style</label>
-                  <select className="w-full p-3 bg-black border border-neutral-800 focus:border-white focus:outline-none transition-colors">
-                    <option>Japanese Traditional</option>
-                    <option>Neo-Traditional</option>
-                    <option>American Traditional</option>
-                    <option>Blackwork</option>
-                    <option>Fine Line</option>
-                    <option>Custom Lettering</option>
-                    <option>Geometric</option>
+                  <select 
+                    name="style"
+                    value={formData.style}
+                    onChange={handleChange}
+                    className="w-full p-3 bg-black border border-neutral-800 focus:border-white focus:outline-none transition-colors"
+                  >
+                    <option value="Japanese Traditional">Japanese Traditional</option>
+                    <option value="Neo-Traditional">Neo-Traditional</option>
+                    <option value="American Traditional">American Traditional</option>
+                    <option value="Blackwork">Blackwork</option>
+                    <option value="Fine Line">Fine Line</option>
+                    <option value="Custom Lettering">Custom Lettering</option>
+                    <option value="Geometric">Geometric</option>
                   </select>
                 </div>
                 <div>
                   <label className="block text-sm mb-2">Additional Notes</label>
-                  <textarea rows={4} className="w-full p-3 bg-black border border-neutral-800 focus:border-white focus:outline-none transition-colors"></textarea>
+                  <textarea 
+                    name="notes"
+                    value={formData.notes}
+                    onChange={handleChange}
+                    rows={4} 
+                    className="w-full p-3 bg-black border border-neutral-800 focus:border-white focus:outline-none transition-colors"
+                  ></textarea>
                 </div>
-                <button type="submit" className="w-full bg-white text-black py-4 hover:bg-neutral-200 transition-colors">Submit Request</button>
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className={`w-full py-4 transition-colors ${isSubmitting ? 'bg-gray-500 cursor-not-allowed' : 'bg-white text-black hover:bg-neutral-200'}`}
+                >
+                  {isSubmitting ? 'Submitting...' : 'Submit Request'}
+                </button>
+                
+                {submitError && (
+                  <div className="mt-4 p-3 bg-red-900 border border-red-700 text-white">
+                    {submitError}
+                  </div>
+                )}
               </form>
+              )}
             </div>
             <div className="space-y-8">
               <div className="border border-neutral-800 p-8">

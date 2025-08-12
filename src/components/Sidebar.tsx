@@ -12,9 +12,9 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Hamburger menu button for mobile */}
+      {/* Hamburger menu button for mobile - hidden when sidebar is open */}
       <button 
-        className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-md bg-black text-white"
+        className={`md:hidden fixed top-4 left-4 z-50 p-2 rounded-md bg-black text-white ${isOpen ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
         onClick={toggleSidebar}
         aria-label="Toggle menu"
       >
@@ -26,7 +26,7 @@ export default function Sidebar() {
           stroke="currentColor"
         >
           {isOpen ? (
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
           ) : (
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
           )}
@@ -40,16 +40,24 @@ export default function Sidebar() {
         md:translate-x-0 md:sticky md:top-0 md:h-screen
       `}>
         <div className="p-5">
-          <h2 className="text-2xl font-bold mb-10 text-red-600">Menu</h2>
+          <h2 className="text-2xl font-bold mb-10 text-red-600">Chrispy Craigslist</h2>
           <nav>
             <ul className="space-y-4">
               <li>
-                <Link href="/" className="block py-2 px-4 rounded hover:bg-red-700 transition-colors">
+                <Link 
+                  href="/" 
+                  className="block py-2 px-4 rounded hover:bg-red-700 transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/bookings" className="block py-2 px-4 rounded hover:bg-red-700 transition-colors">
+                <Link 
+                  href="/bookings" 
+                  className="block py-2 px-4 rounded hover:bg-red-700 transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
                   Bookings
                 </Link>
               </li>

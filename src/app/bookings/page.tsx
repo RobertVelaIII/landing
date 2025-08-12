@@ -1,8 +1,12 @@
 "use client";
 
 import React, { useState } from 'react';
+import Modal from '@/components/Modal';
 
 export default function BookingsPage() {
+  // Modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
   // Form state
   const [formData, setFormData] = useState({
     fullName: '',
@@ -234,17 +238,46 @@ export default function BookingsPage() {
                   </svg>
                   <span>Chat with an Artist</span>
                 </button>
-                <button className="flex items-center justify-center space-x-2 bg-white text-black py-4 hover:bg-neutral-200 transition-colors">
+                <button 
+                  onClick={() => setIsModalOpen(true)} 
+                  className="flex items-center justify-center space-x-2 bg-white text-black py-4 hover:bg-neutral-200 transition-colors relative group"
+                >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                   <span>Call Now</span>
+                  <span className="absolute -top-2 right-0 bg-red-600 text-white text-xs px-2 py-1 rounded-full">Coming Soon</span>
                 </button>
               </div>
             </div>
           </div>
         </div>
       </section>
+      
+      {/* Coming Soon Modal */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Feature Coming Soon"
+      >
+        <div className="space-y-4">
+          <div className="flex items-center justify-center">
+            <div className="relative">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 absolute top-4 left-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+            </div>
+          </div>
+          <p className="text-center text-lg">This feature is currently under construction.</p>
+          <p className="text-center text-neutral-400">Please check back in 24 hours when testing is complete.</p>
+          <div className="bg-neutral-800 p-4 rounded mt-4">
+            <p className="text-center">In the meantime, you can use the chat feature to connect with an artist.</p>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 }

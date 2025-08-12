@@ -31,7 +31,7 @@ export default function ChatWidget() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
   // Backend API URL for chat
-  const CHAT_API_URL = 'http://localhost:3001/api/chat';
+  const CHAT_API_URL = 'https://chrispy-backend.fly.dev/api/chat';
 
   const toggleChat = () => {
     setIsOpen(!isOpen);

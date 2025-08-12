@@ -36,7 +36,7 @@ export default function BookingsPage() {
     
     try {
       // Send data to backend API
-      const response = await fetch('http://localhost:3001/api/contact/booking', {
+      const response = await fetch('https://chrispy-backend.fly.dev/api/contact/booking', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

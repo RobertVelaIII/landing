@@ -30,8 +30,8 @@ export default function ChatWidget() {
   const [inputText, setInputText] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
-  // Placeholder API URL - to be replaced with actual backend URL
-  const CHAT_API_URL = 'https://api.example.com/chat';
+  // Backend API URL for chat
+  const CHAT_API_URL = 'http://localhost:3001/api/chat';
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
@@ -77,22 +77,30 @@ export default function ChatWidget() {
       // Wait for the random delay before sending the API call
       setTimeout(async () => {
         try {
-          // This would be the actual API call to OpenAI or your backend
-          // const response = await fetch(CHAT_API_URL, {
-          //   method: 'POST',
-          //   headers: {
-          //     'Content-Type': 'application/json',
-          //     'Authorization': 'Bearer YOUR_OPENAI_API_KEY' // This should be handled securely by your backend
-          //   },
-          //   body: JSON.stringify({ message: userMessageText }),
-          // });
-          // const data = await response.json();
-          // const botResponseText = data.response;
+          // Make the actual API call to our backend
+          const response = await fetch(CHAT_API_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ 
+              messages: [
+                { role: 'user', content: userMessageText }
+              ] 
+            }),
+          });
           
-          // For now, we'll simulate a response
+          if (!response.ok) {
+            throw new Error(`API responded with status: ${response.status}`);
+          }
+          
+          const data = await response.json();
+          const botResponseText = data.response;
+          
+          // Create bot message with the response from the API
           const botMessage: Message = {
             id: messages.length + 2,
-            text: `This is a placeholder response. Your backend will handle: "${userMessageText}"`,
+            text: botResponseText,
             sender: 'bot',
             timestamp: new Date(),
           };
